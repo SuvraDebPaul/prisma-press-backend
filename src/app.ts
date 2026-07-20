@@ -2,6 +2,8 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import config from "./config";
 import cookieParser from "cookie-parser";
+import { userRoutes } from "./modules/users/user.route";
+import { authRoutes } from "./modules/auth/auth.routes";
 
 const app: Application = express();
 
@@ -13,5 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World");
 });
+
+app.use("/api/users", userRoutes);
+app.use("/api/users", authRoutes);
 
 export default app;
