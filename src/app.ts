@@ -4,6 +4,8 @@ import config from "./config";
 import cookieParser from "cookie-parser";
 import { userRoutes } from "./modules/users/user.route";
 import { authRoutes } from "./modules/auth/auth.routes";
+import { postRoutes } from "./modules/posts/post.routes";
+import { commentRoutes } from "./modules/comments/comment.routes";
 
 const app: Application = express();
 
@@ -18,5 +20,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/users", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
 
 export default app;

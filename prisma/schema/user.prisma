@@ -1,14 +1,16 @@
 model User {
-    id String @id @default(uuid()) // v4 Default... can be changed v7 
-    name String @db.VarChar(255)
-    email String @unique @db.VarChar(255)
-    password String @db.VarChar(255)
-    activeStatus ActiveStatus @default(ACTIVE)
-    role Role @default(USER)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id           String       @id @default(uuid()) // v4 Default... can be changed v7 
+  name         String       @db.VarChar(255)
+  email        String       @unique @db.VarChar(255)
+  password     String       @db.VarChar(255)
+  activeStatus ActiveStatus @default(ACTIVE)
+  role         Role         @default(USER)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
-    profile Profile?
+  profile Profile?
+  posts   Post[]
+  coments Comment[]
 
-    @@map("users")
+  @@map("users")
 }
